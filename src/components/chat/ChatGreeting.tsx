@@ -1,5 +1,5 @@
 interface ChatGreetingProps {
-  studentName: String
+  studentName: string
 }
 
 export function ChatGreeting({ studentName }: ChatGreetingProps): JSX.Element {
