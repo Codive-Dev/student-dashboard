@@ -115,7 +115,7 @@ export function WorldTimePicker({className}: WorldTimePickerProps) {
   }, []);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className || ''}`}>
       <button
         ref={menuButtonRef}
         onClick={() => {
