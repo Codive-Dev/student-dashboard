@@ -28,8 +28,10 @@ export function ProfileSettings() {
 
   return (
     <div className="max-w-2xl mx-auto p-10">
-      <h1 className="text-2xl font-bold text-blue-900 mb-6">Profile Settings</h1>
-      
+      <h1 className="text-2xl font-bold text-blue-900 mb-6">
+        Profile Settings
+      </h1>
+
       <div className="bg-white rounded-xl shadow-sm p-6">
         {/* Avatar Section */}
         <div className="flex items-center gap-6 mb-8">
@@ -39,7 +41,7 @@ export function ProfileSettings() {
               alt={formData.name}
               className="w-24 h-24 rounded-full object-cover"
             />
-            <button className="absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700">
+            <button className="min-h-min min-w-min absolute bottom-0 right-0 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700">
               <Camera className="w-4 h-4" />
             </button>
           </div>
@@ -59,7 +61,9 @@ export function ProfileSettings() {
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -72,7 +76,9 @@ export function ProfileSettings() {
               <input
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -85,7 +91,9 @@ export function ProfileSettings() {
               <input
                 type="tel"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -97,7 +105,9 @@ export function ProfileSettings() {
               </label>
               <select
                 value={formData.grade}
-                onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, grade: e.target.value })
+                }
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option>6th Grade</option>

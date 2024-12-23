@@ -17,17 +17,15 @@ export function QuickActions({ onActionSelect, onClose }: QuickActionsProps) {
         onClose?.();
         break;
       case 'reschedule':
-        navigate('/schedule');
+        navigate('/upcoming-classes');
         onClose?.();
         break;
       case 'cancel':
-        // Show cancel confirmation modal
         if (window.confirm('Are you sure you want to cancel this class?')) {
           onActionSelect('cancel-class-confirmed');
         }
         break;
       case 'pause':
-        // Show pause confirmation modal
         if (window.confirm('Are you sure you want to pause your classes?')) {
           onActionSelect('pause-classes-confirmed');
         }

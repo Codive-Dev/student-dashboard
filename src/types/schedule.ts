@@ -26,3 +26,30 @@ export interface ScheduleState {
     statuses: ScheduleStatus[];
   };
 }
+
+/**
+ * Represents a scheduled class in the learning platform
+ * @interface Class
+ */
+export interface Class {
+  /** Unique identifier for the class */
+  id: number;
+
+  /** Title/name of the class */
+  title: string;
+
+  /** Name of the teacher conducting the class */
+  teacher: string;
+
+  /** Subject category of the class */
+  subject: string;
+
+  /** Scheduled start time of the class */
+  startTime: Date;
+
+  /** Duration of the class in minutes */
+  duration: number;
+
+  /** Optional number of enrolled students */
+  students?: number;
+}

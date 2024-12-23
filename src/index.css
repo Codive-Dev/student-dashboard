@@ -7,6 +7,48 @@
     --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
   }
+
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply text-fluid-base;
+  }
+
+  h1 {
+    @apply text-fluid-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-fluid-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-fluid-xl font-semibold;
+  }
+
+  /* Minimum touch target size */
+  button,
+  [role='button'],
+  input:not([type='checkbox']),
+  select,
+  a {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+/* Responsive grid layouts */
+@layer components {
+  .responsive-grid {
+    @apply grid gap-4 sm:gap-6 lg:gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  .responsive-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 /* Calendar Styles */
@@ -19,6 +61,7 @@
 .react-calendar__tile {
   padding: 0.75em 0.5em;
   border-radius: 0.5rem;
+  min-height: 44px;
 }
 
 .react-calendar__tile:enabled:hover,
@@ -39,8 +82,24 @@
   margin-bottom: 1rem;
 }
 
+.react-calendar__navigation button {
+  min-height: 44px;
+}
+
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #f0f9ff;
   border-radius: 0.5rem;
+}
+
+/* Responsive images */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Responsive tables */
+@media (max-width: 640px) {
+  .responsive-table {
+    @apply block w-full overflow-x-auto;
+  }
 }

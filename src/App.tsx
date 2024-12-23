@@ -9,6 +9,7 @@ import { Rewards } from './pages/Rewards';
 import { HelpCenter } from './pages/HelpCenter';
 import { ProfileSettings } from './pages/ProfileSettings';
 import { UpcomingClasses } from './pages/UpcomingClasses';
+import { ScheduleClass } from './pages/ScheduleClass';
 
 export function App() {
   return (
@@ -24,6 +25,7 @@ export function App() {
           <Route path="/help" element={<HelpCenter />} />
           <Route path="/profile-settings" element={<ProfileSettings />} />
           <Route path="/upcoming-classes" element={<UpcomingClasses />} />
+          <Route path="/schedule-class" element={<ScheduleClass />} />
         </Routes>
       </Layout>
     </BrowserRouter>

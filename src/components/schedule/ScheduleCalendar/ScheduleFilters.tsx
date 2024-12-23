@@ -20,8 +20,8 @@ export function ScheduleFilters({
   onStatusChange,
 }: ScheduleFiltersProps) {
   return (
-    <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
-      <div className="flex items-center gap-4">
+    <div className="bg-white rounded-xl shadow-sm p-4 mb-6 flex-wrap">
+      <div className="flex items-center gap-4 flex-wrap">
         <div className="flex-1 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
@@ -33,10 +33,12 @@ export function ScheduleFilters({
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Filter className="w-5 h-5 text-gray-500" />
           <select
-            onChange={(e) => onCategoryChange(e.target.value as ScheduleCategory)}
+            onChange={(e) =>
+              onCategoryChange(e.target.value as ScheduleCategory)
+            }
             className="border border-gray-200 rounded-lg px-3 py-2"
           >
             <option value="">All Categories</option>

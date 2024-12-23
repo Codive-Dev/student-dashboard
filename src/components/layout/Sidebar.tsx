@@ -1,82 +1,76 @@
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { cn } from '../../utils/cn.ts';
-import {
-  Home,
-  BookOpen,
-  Award,
-  ClipboardCheck,
-  Gift,
-  Bot,
-  HelpCircle,
-  Video,
-} from 'lucide-react';
-import { ChatInterface } from '../chat/ChatInterface';
+import { NavLink } from 'react-router-dom';
+import { Bot, HelpCircle } from 'lucide-react';
+import { cn } from '../../utils/cn';
+import { navItems } from '../../config/navigation';
+import { SettingsPopover } from '../settings/SettingsPopover';
+import { useViewportSize } from '../../hooks/useViewportSize';
 
-const navItems = [
-  { icon: Home, label: 'Explore', path: '/' },
-  { icon: BookOpen, label: 'Class Summary', path: '/class-summary' },
-  { icon: Video, label: 'Recorded Classes', path: '/recorded-classes' },
-  { icon: Award, label: 'Certificates', path: '/certificates' },
-  { icon: ClipboardCheck, label: 'Assessments', path: '/assessments' },
-  { icon: Gift, label: 'My Rewards', path: '/rewards' },
-];
+interface SidebarProps {
+  onChatOpen: () => void;
+}
 
-export function Sidebar() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleChatOpen = () => setIsChatOpen(true);
-  const handleChatClose = () => setIsChatOpen(false);
-  const handleNeedHelp = () => navigate('/help');
+export function Sidebar({ onChatOpen }: SidebarProps) {
+  const { width } = useViewportSize();
+  const isTablet = width >= 768 && width < 1024;
 
   return (
-    <>
-      <div className="w-64 bg-blue-900 h-screen fixed left-0 top-0 text-white p-6 z-50">
-        <div className="mb-4">
-          <img className="h-14" src="/assets/images/logo.svg"/>
-        </div>
+    <div className="hidden md:flex scroll-auto fixed top-0 left-0 h-screen bg-blue-900 text-white flex-col transition-all duration-300 lg:w-64 md:w-20">
+      <div className="p-5">
+        <img
+          className="lg:h-14 w-auto brightness-1000"
+          src={
+            isTablet
+              ? '/assets/images/logo-small.svg'
+              : '/assets/images/logo-full.svg'
+          }
+          alt="Logo"
+        />
+      </div>
 
-        <nav className="space-y-4">
+      <nav className="flex-1 px-3">
+        <div className="space-y-2">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
                 cn(
-                  'flex items-center space-x-3 p-3 rounded-lg transition-colors',
+                  'flex items-center w-full h-11 px-4 rounded-lg transition-colors',
+                  'md:justify-center lg:justify-start',
                   isActive
                     ? 'bg-blue-800 text-white'
-                    : 'text-blue-100 hover:bg-blue-800'
+                    : 'text-blue-100 hover:bg-blue-700'
                 )
               }
             >
-              <item.icon className="w-5 h-5" />
-              <span>{item.label}</span>
+              <item.icon className="w-5 h-5 flex-shrink-0" />
+              <span className="ml-3 hidden lg:block">{item.label}</span>
             </NavLink>
           ))}
-        </nav>
-
-        <div className="absolute bottom-8 left-6 right-6 space-y-4">
-          <button 
-            onClick={handleChatOpen}
-            className="w-full flex items-center space-x-2 bg-blue-700 p-3 rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            <Bot className="w-5 h-5" />
-            <span>Ask Mimi</span>
-          </button>
-
-          <button 
-            onClick={handleNeedHelp}
-            className="w-full flex items-center space-x-2 bg-blue-800/50 p-3 rounded-lg hover:bg-blue-800 transition-colors"
-          >
-            <HelpCircle className="w-5 h-5" />
-            <span>Need Help?</span>
-          </button>
         </div>
-      </div>
+      </nav>
 
-      <ChatInterface isOpen={isChatOpen} onClose={handleChatClose} />
-    </>
+      <div className="p-4 space-y-3">
+        <div className="pt-3 border-t border-blue-800">
+          <SettingsPopover className="w-full flex items-center h-11 px-4 rounded-lg text-blue-100 hover:bg-blue-700 transition-colors md:justify-center lg:justify-start" />
+        </div>
+
+        <button
+          onClick={onChatOpen}
+          className="flex items-center w-full h-11 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 transition-colors md:justify-center lg:justify-start"
+        >
+          <Bot className="w-5 h-5 flex-shrink-0" />
+          <span className="ml-3 hidden lg:block">Ask Mimi</span>
+        </button>
+
+        <NavLink
+          to="/help"
+          className="flex items-center w-full h-11 px-4 rounded-lg bg-blue-800/50 hover:bg-blue-700 transition-colors md:justify-center lg:justify-start"
+        >
+          <HelpCircle className="w-5 h-5 flex-shrink-0" />
+          <span className="ml-3 hidden lg:block">Need Help?</span>
+        </NavLink>
+      </div>
+    </div>
   );
 }

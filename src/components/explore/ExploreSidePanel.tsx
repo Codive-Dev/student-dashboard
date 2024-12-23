@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { ProfileCard } from '../dashboard/ProfileCard';
 import { LearningProgress } from '../dashboard/LearningProgress.tsx';
 import { ScheduleStats } from '../schedule/ScheduleStats';
 import { CalendarLegend } from './CalendarLegend';
+import { DateValues } from 'date-fns';
 
 export function ExploreSidePanel(): JSX.Element {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  const handleDateChange = (value: Date, event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDateChange = (
+    value: any,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     setSelectedDate(value);
   };
 
@@ -26,7 +30,7 @@ export function ExploreSidePanel(): JSX.Element {
             View All
           </button>
         </div>
-        
+
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}

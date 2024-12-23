@@ -20,8 +20,8 @@ export function CalendarHeader({
   title,
 }: CalendarHeaderProps) {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <div className="flex items-center gap-4">
+    <div className="flex items-center justify-between mb-6 flex-wrap">
+      <div className="flex items-center lg:gap-4 flex-wrap">
         <div className="flex items-center gap-2">
           <button
             onClick={onPrevious}
@@ -45,7 +45,7 @@ export function CalendarHeader({
         <h2 className="text-xl font-semibold">{title}</h2>
       </div>
 
-      <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+      <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg mt-2 sm:mt-0">
         {(['day', 'week', 'month'] as ViewType[]).map((viewType) => (
           <button
             key={viewType}
