@@ -15,7 +15,7 @@ interface Timezone {
 }
 
 interface WorldTimePickerProps {
-  className: string
+  className?: string
 }
 
 export function WorldTimePicker({className}: WorldTimePickerProps) {

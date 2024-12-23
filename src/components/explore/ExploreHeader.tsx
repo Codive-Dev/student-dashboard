@@ -25,7 +25,7 @@ export function ExploreHeader() {
           </div>
         </div>
       </div>
-      <WorldTimePicker className={'mt-5'} />
+      <WorldTimePicker />
     </div>
   );
 }
