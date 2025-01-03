@@ -3,7 +3,7 @@ import { Schedule } from '../types/schedule';
 export const sampleSchedules: Schedule[] = [
   {
     id: '1',
-    title: 'Mathematics Class',
+    title: 'Python Class',
     startTime: new Date(Date.now() + 1000 * 60 * 60), // 1 hour from now
     duration: 60,
     category: 'class',
@@ -14,7 +14,7 @@ export const sampleSchedules: Schedule[] = [
   },
   {
     id: '2',
-    title: 'Physics Homework',
+    title: 'Java Homework',
     startTime: new Date(Date.now() + 1000 * 60 * 60 * 2), // 2 hours from now
     duration: 45,
     category: 'homework',
@@ -24,7 +24,7 @@ export const sampleSchedules: Schedule[] = [
   },
   {
     id: '3',
-    title: 'Chemistry Test',
+    title: 'JS Assignment',
     startTime: new Date(Date.now() + 1000 * 60 * 60 * 3), // 3 hours from now
     duration: 90,
     category: 'exam',
